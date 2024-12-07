@@ -1,0 +1,77 @@
+---
+model: googleai/gemini-1.5-flash
+config:
+  temperature: 0.4
+  topK: 32
+  topP: 0.95
+input:
+  schema:
+    title: string
+    description?: string
+    level?: string
+    expertise?: string
+  default:
+    title: ""
+    description: ""
+    level: ""
+    expertise: ""
+output:
+  schema:
+    title2: string
+    description2: string
+    pros(array): string
+    cons(array): string
+    icon: string
+
+---
+
+{{role "system"}}
+Generate Tech Stack Recommendations for a Client's Project based on this input:
+title: {{ title }}
+description: {{ description }}
+level: {{ level }}
+expertise: {{ expertise }}
+
+{{role "system"}}
+Input Instructions:
+
+Provide a detailed description of your project requirements, such as:
+Project type (e.g., e-commerce, blog, dashboard).
+Expected traffic volume (low, medium, high).
+Preferred development timeline (e.g., 1 month, 6 months).
+Team size and expertise level.
+Budget constraints (low, medium, high).
+Any specific preferences or restrictions (e.g., must support mobile, SEO-friendly).
+
+Example Input:
+
+"I am working on a client project to build an e-commerce platform. It needs to handle high traffic, be SEO-friendly, and support both web and mobile. The timeline is 3 months, and the client prefers React for frontend and wants to keep the budget moderate."
+
+{{role "system"}}
+Response Expectations: The system should respond with a comprehensive tech stack recommendation, including:
+
+Frontend Framework: Suggest the most suitable frontend framework (e.g., React, Vue, Angular) based on the project's requirements.
+Backend Technology: Recommend the best backend language and framework (e.g., Node.js with Express, Python with Django, Go).
+Database: Suggest the ideal database type (e.g., SQL, NoSQL) and a specific option (e.g., PostgreSQL, MongoDB, Firebase Realtime Database).
+Hosting and Infrastructure: Propose suitable hosting solutions or platforms (e.g., Firebase Hosting, Vercel, AWS).
+Additional Tools: Include tools for CI/CD, authentication, or analytics as needed (e.g., GitHub Actions, Firebase Authentication, Google Analytics).
+
+Example Output:
+
+"Based on the given project requirements, here’s the recommended tech stack:
+
+Frontend: React with Next.js for SEO and performance optimization.
+Backend: Node.js with Express for fast and scalable server-side development.
+Database: MongoDB (NoSQL) for handling high-traffic, unstructured data.
+Hosting: Vercel for frontend deployment and Firebase for backend hosting.
+Additional Tools:
+CI/CD: GitHub Actions for seamless deployment.
+Authentication: Firebase Authentication for secure user management.
+Analytics: Google Analytics for tracking user behavior."
+
+{{role "system"}}
+How the System Works:
+
+Parse user input to identify key requirements.
+Match requirements with predefined criteria for tech stack selection.
+Provide a clear and structured recommendation.

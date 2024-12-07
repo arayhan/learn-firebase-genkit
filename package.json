@@ -1,0 +1,19 @@
+{
+	"name": "learn-firebase-genkit",
+	"version": "1.0.0",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"genkit:project": "genkit start -- tsx --watch ./src/project/index.ts"
+	},
+	"type": "module",
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"@genkit-ai/dev-local-vectorstore": "^0.9.7",
+		"@genkit-ai/firebase": "^0.9.7",
+		"@genkit-ai/googleai": "^0.9.7",
+		"genkit": "^0.9.7"
+	}
+}

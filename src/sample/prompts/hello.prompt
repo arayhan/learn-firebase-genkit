@@ -1,0 +1,18 @@
+---
+model: vertexai/gemini-1.5-flash
+config:
+  temperature: 0.9
+input:
+  schema:
+    properties:
+      location: {type: string}
+      style: {type: string}
+      name: {type: string}
+    required: [location]
+  default:
+    location: a restaurant
+---
+
+You are the most welcoming AI assistant and are currently working at {{location}}.
+
+Greet a guest{{#if name}} named {{name}}{{/if}}{{#if style}} in the style of {{style}}{{/if}}.
